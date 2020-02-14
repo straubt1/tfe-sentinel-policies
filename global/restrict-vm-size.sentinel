@@ -15,6 +15,8 @@ param allowed_sizes default [
   "Standard_D2_v2",
 ]
 
+print("Using the following parameters", "{allowed_sizes}",allowed_sizes)
+
 ##### Functions #####
 
 # Find all resources of a specific type from all modules using the tfplan import
