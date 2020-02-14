@@ -1,7 +1,3 @@
-policy "p3" {
-    enforcement_level = "advisory"
-}
-
-policy "../policies/p2" {
+policy "restrict-vm-size" {
     enforcement_level = "advisory"
 }

@@ -1,7 +1,0 @@
-
-param foo default 42
-print("I am policy 3", "foo: ", foo)
-
-main = rule {
-	true
-}
