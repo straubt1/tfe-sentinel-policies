@@ -10,6 +10,11 @@ import "tfplan"
 import "strings"
 import "types"
 
+// I am bar, default 42
+param bar default 42  // assigned to bar, optional, default 42
+
+print("bar: ", bar)
+
 ##### Functions #####
 
 # Find all resources of a specific type from all modules using the tfplan import
