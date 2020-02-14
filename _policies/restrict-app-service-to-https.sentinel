@@ -1,21 +1,11 @@
 # This policy uses the Sentinel tfplan import to require that
-# all Azure VMs have vm sizes from an allowed list
+# all Azure app services have https_only set to true so that
+# they can only be accessed via HTTPS
 
 ##### Imports #####
 
 import "tfplan"
 import "strings"
-
-##### Parameters #####
-
-param allowed_sizes default [
-	"Standard_A1",
-	"Standard_A2",
-	"Standard_D1_v2",
-	"Standard_D2_v2",
-]
-
-print("Using the following parameters", "{allowed_sizes}", allowed_sizes)
 
 ##### Functions #####
 
@@ -56,8 +46,8 @@ find_resources_from_plan = func(type) {
 }
 
 # Validate that all instances of a specified resource type being modified have
-# a specified top-level attribute in a given list
-validate_attribute_in_list = func(type, attribute, allowed_values) {
+# a specified top-level attribute with a given value
+validate_attribute_has_value = func(type, attribute, value) {
 
 	validated = true
 
@@ -83,26 +73,27 @@ validate_attribute_in_list = func(type, attribute, allowed_values) {
 			# uncomment the next line.
 			# validated = false
 		} else {
-			# Validate that each instance has allowed value
-			if r.applied[attribute] else "" not in allowed_values {
+			# Validate that each instance has desired value
+			if (r.applied[attribute] else "") is not value {
 				print("Resource", address, "has attribute", attribute, "with value",
 					r.applied[attribute] else "",
-					"that is not in the allowed list:", allowed_values)
+					"that is not the required value:", value)
 				validated = false
 			}
 		}
 
 	}
+
 	return validated
 }
 
 ##### Rules #####
 
-# Calls the validation function
-vms_validated = validate_attribute_in_list("azurerm_virtual_machine",
-	"vm_size", allowed_sizes)
+# Call the validation function
+app_services_validated = validate_attribute_has_value("azurerm_app_service",
+	"https_only", true)
 
 # Main rule
 main = rule {
-	vms_validated
+	app_services_validated
 }

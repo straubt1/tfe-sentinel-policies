@@ -1,4 +1,4 @@
-# This policy uses the Sentinel tfplan import to require that all given resources
+# This policy uses the Sentinel tfplan import to require that all Azure VMs
 # have all mandatory tags.
 
 # Note that the comparison is case-sensitive even though Azure tags are not.
@@ -9,17 +9,6 @@
 import "tfplan"
 import "strings"
 import "types"
-
-##### Parameters #####
-
-param resource_type default "azurerm_resource_group"
-param mandatory_tags default [
-	"environment",
-]
-
-print("Using the following parameters",
-	"{resource_type}", resource_type,
-	"{mandatory_tags}", mandatory_tags)
 
 ##### Functions #####
 
@@ -124,10 +113,15 @@ validate_attribute_contains_list = func(type, attribute, required_values) {
 	return validated
 }
 
+### List of mandatory tags ###
+mandatory_tags = [
+	"environment",
+]
+
 ### Rules ###
 
 # Call the validation function
-tags_validated = validate_attribute_contains_list(resource_type,
+tags_validated = validate_attribute_contains_list("azurerm_virtual_machine",
 	"tags", mandatory_tags)
 
 #Main rule
