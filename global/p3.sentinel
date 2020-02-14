@@ -1,0 +1,7 @@
+
+param foo default 42
+print("I am policy 2", "foo: ", foo)
+
+main = rule {
+	true
+}
