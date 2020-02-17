@@ -39,6 +39,6 @@ resource "tfe_policy_set_parameter" "app-mandatory_tags" {
 
 resource "tfe_policy_set_parameter" "app-resource_type" {
   policy_set_id = tfe_policy_set.app.id
-  key           = "resource_type"
-  value         = "azurerm_resource_group"
+  key           = "resource_group_name"
+  value         = "tstraub-rg"
 }
