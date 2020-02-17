@@ -239,7 +239,7 @@ _modules = {
 							"name":                             "se-hangout-azurevmdemo-1-vm",
 							"os_profile": [
 								{
-									"admin_password": "Password1234!",
+									"admin_password": "REDACTED",
 									"admin_username": "testadmin",
 									"computer_name":  "hostname",
 								},

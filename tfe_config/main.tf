@@ -18,6 +18,11 @@ variable "vcs_config" {
     branch         = string
     oauth_token_id = string
   })
+  default = {
+    identifier     = ""
+    branch         = ""
+    oauth_token_id = ""
+  }
 }
 
 provider "tfe" {

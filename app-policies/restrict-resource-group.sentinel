@@ -15,34 +15,39 @@ print("Using the following parameters", "{resource_group_name}", resource_group_
 ##### Functions #####
 
 # Find all resources of a specific type from all modules using the tfplan import
-find_resources_from_plan = func(type) {
+find_resources_from_plan = func(attribute) {
 
 	resources = {}
 
 	# Iterate over all modules in the tfplan import
 	for tfplan.module_paths as path {
-		# Iterate over the named resources of desired type in the module
-		for tfplan.module(path).resources[type] else {} as name, instances {
-			# Iterate over resource instances
-			for instances as index, r {
+		# Iterate over all resources in the module
+		for tfplan.module(path).resources else {} as type_name, resource_types {
+			# Iterate over resource instances (count)
+			for resource_types as name, type_instances {
+				for type_instances as index, r {
+					# Check if resource has a resource_group_name attribute, if not, filter out
+					if r.applied[attribute] else null is null {
+						continue
+					}
+					# Get the address of the instance
+					if length(path) == 0 {
+						# root module
+						address = type_name + "." + name + "[" + string(index) + "]"
+					} else {
+						# non-root module
+						address = "module." + strings.join(path, ".module.") + "." +
+							type_name +
+							"." +
+							name +
+							"[" +
+							string(index) +
+							"]"
+					}
 
-				# Get the address of the instance
-				if length(path) == 0 {
-					# root module
-					address = type + "." + name + "[" + string(index) + "]"
-				} else {
-					# non-root module
-					address = "module." + strings.join(path, ".module.") + "." +
-						type +
-						"." +
-						name +
-						"[" +
-						string(index) +
-						"]"
+					# Add the instance to resources map, setting the key to the address
+					resources[address] = r
 				}
-
-				# Add the instance to resources map, setting the key to the address
-				resources[address] = r
 			}
 		}
 	}
@@ -52,16 +57,15 @@ find_resources_from_plan = func(type) {
 
 # Validate that all instances of a specified resource type being modified have
 # a specified top-level attribute in a given list
-validate_attribute_in_list = func(type, attribute, allowed_values) {
+validate_attribute = func(attribute, allowed_value) {
 
 	validated = true
 
 	# Get all resource instances of the specified type
-	resource_instances = find_resources_from_plan(type)
+	resource_instances = find_resources_from_plan(attribute)
 
 	# Loop through the resource instances
 	for resource_instances as address, r {
-
 		# Skip resource instances that are being destroyed
 		# to avoid unnecessary policy violations.
 		# Used to be: if length(r.diff) == 0
@@ -70,23 +74,11 @@ validate_attribute_in_list = func(type, attribute, allowed_values) {
 			continue
 		}
 
-		# Determine if the attribute is computed
-		if r.diff[attribute].computed else false is true {
-			print("Resource", address, "has attribute", attribute,
-				"that is computed.")
-			# If you want computed values to cause the policy to fail,
-			# uncomment the next line.
-			# validated = false
-		} else {
-			# Validate that each instance has allowed value
-			if r.applied[attribute] else "" not in allowed_values {
-				print("Resource", address, "has attribute", attribute, "with value",
-					r.applied[attribute] else "",
-					"that is not in the allowed list:", allowed_values)
-				validated = false
-			}
+		if r.applied[attribute] else "" not in allowed_value {
+			print("Resource attribute ",strings.join([address, attribute], "."), "was set to",
+				r.applied[attribute] else "", "and should be", allowed_value)
+			validated = false
 		}
-
 	}
 	return validated
 }
@@ -94,10 +86,9 @@ validate_attribute_in_list = func(type, attribute, allowed_values) {
 ##### Rules #####
 
 # Calls the validation function
-vms_validated = validate_attribute_in_list("azurerm_virtual_machine",
-	"vm_size", allowed_sizes)
+resources_validated = validate_attribute("resource_group_name", resource_group_name)
 
 # Main rule
 main = rule {
-	vms_validated
+	resources_validated
 }

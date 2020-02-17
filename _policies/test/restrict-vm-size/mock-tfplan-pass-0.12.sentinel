@@ -235,7 +235,7 @@ _modules = {
 							"name":                             "roger-azurevmdemo-vm",
 							"os_profile": [
 								{
-									"admin_password": "Password1234!",
+									"admin_password": "REDACTED",
 									"admin_username": "testadmin",
 									"computer_name":  "hostname",
 								},
@@ -467,7 +467,7 @@ _modules = {
 							"name":                             "roger-azurevmdemo-vm",
 							"os_profile": [
 								{
-									"admin_password": "Password1234!",
+									"admin_password": "REDACTED",
 									"admin_username": "testadmin",
 									"computer_name":  "hostname",
 								},

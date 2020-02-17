@@ -269,7 +269,7 @@ _modules = {
 							"network_interface_ids": "74D93920-ED26-11E3-AC10-0800200C9A66",
 							"os_profile": [
 								{
-									"admin_password": "Password1234!",
+									"admin_password": "REDACTED",
 									"admin_username": "testadmin",
 									"computer_name":  "hostname",
 									"custom_data":    "74D93920-ED26-11E3-AC10-0800200C9A66",
@@ -355,7 +355,7 @@ _modules = {
 							},
 							"os_profile.1173764063.admin_password": {
 								"computed": false,
-								"new":      "Password1234!",
+								"new":      "REDACTED",
 								"old":      "",
 							},
 							"os_profile.1173764063.admin_username": {

@@ -9,6 +9,10 @@ resource "tfe_policy_set" "core" {
     branch         = var.vcs_config.branch
     oauth_token_id = var.vcs_config.oauth_token_id
   }
+
+  lifecycle {
+    ignore_changes = [workspace_external_ids]
+  }
 }
 
 resource "tfe_policy_set_parameter" "core-allowed_sizes" {

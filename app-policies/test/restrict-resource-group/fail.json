@@ -1,0 +1,11 @@
+{
+    "mock": {
+        "tfplan": "mock-tfplan-fail.sentinel"
+    },
+    "param": {
+        "resource_group_name": "tfe-set-rg"
+    },
+    "test": {
+        "main": false
+    }
+}

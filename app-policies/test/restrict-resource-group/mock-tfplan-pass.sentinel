@@ -1,4 +1,5 @@
 import "strings"
+import "types"
 
 _modules = {
 	"root": {
@@ -9,34 +10,21 @@ _modules = {
 				"main": {
 					0: {
 						"applied": {
-							"applied_dns_servers":           "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"dns_servers":                   "74D93920-ED26-11E3-AC10-0800200C9A66",
 							"enable_accelerated_networking": false,
 							"enable_ip_forwarding":          false,
-							"id": "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"internal_dns_name_label": "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"internal_fqdn":           "74D93920-ED26-11E3-AC10-0800200C9A66",
 							"ip_configuration": [
 								{
-									"application_gateway_backend_address_pools_ids": "74D93920-ED26-11E3-AC10-0800200C9A66",
-									"application_security_group_ids":                "74D93920-ED26-11E3-AC10-0800200C9A66",
-									"load_balancer_backend_address_pools_ids":       "74D93920-ED26-11E3-AC10-0800200C9A66",
-									"load_balancer_inbound_nat_rules_ids":           "74D93920-ED26-11E3-AC10-0800200C9A66",
 									"name":                          "testconfiguration1",
-									"primary":                       "74D93920-ED26-11E3-AC10-0800200C9A66",
+									"private_ip_address":            null,
 									"private_ip_address_allocation": "dynamic",
 									"private_ip_address_version":    "IPv4",
-									"subnet_id":                     "74D93920-ED26-11E3-AC10-0800200C9A66",
+									"public_ip_address_id":          null,
 								},
 							],
-							"location":             "eastus",
-							"mac_address":          "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"name":                 "azurevmdemo-nic",
-							"private_ip_address":   "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"private_ip_addresses": "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"resource_group_name":  "azurevmdemo-resources",
-							"tags":                 {},
-							"virtual_machine_id":   "74D93920-ED26-11E3-AC10-0800200C9A66",
+							"location": "eastus",
+							"name":     "roger-azurevmdemo-nic",
+							"network_security_group_id": null,
+							"resource_group_name":       "tfe-set-rg",
 						},
 						"destroy": false,
 						"diff": {
@@ -80,49 +68,9 @@ _modules = {
 								"new":      "1",
 								"old":      "",
 							},
-							"ip_configuration.0.application_gateway_backend_address_pools_ids.#": {
+							"ip_configuration.0.%": {
 								"computed": true,
 								"new":      "",
-								"old":      "",
-							},
-							"ip_configuration.0.application_security_group_ids.#": {
-								"computed": true,
-								"new":      "",
-								"old":      "",
-							},
-							"ip_configuration.0.load_balancer_backend_address_pools_ids.#": {
-								"computed": true,
-								"new":      "",
-								"old":      "",
-							},
-							"ip_configuration.0.load_balancer_inbound_nat_rules_ids.#": {
-								"computed": true,
-								"new":      "",
-								"old":      "",
-							},
-							"ip_configuration.0.name": {
-								"computed": false,
-								"new":      "testconfiguration1",
-								"old":      "",
-							},
-							"ip_configuration.0.primary": {
-								"computed": true,
-								"new":      "",
-								"old":      "",
-							},
-							"ip_configuration.0.private_ip_address_allocation": {
-								"computed": false,
-								"new":      "dynamic",
-								"old":      "",
-							},
-							"ip_configuration.0.private_ip_address_version": {
-								"computed": false,
-								"new":      "IPv4",
-								"old":      "",
-							},
-							"ip_configuration.0.subnet_id": {
-								"computed": true,
-								"new":      "${azurerm_subnet.internal.id}",
 								"old":      "",
 							},
 							"location": {
@@ -137,7 +85,12 @@ _modules = {
 							},
 							"name": {
 								"computed": false,
-								"new":      "azurevmdemo-nic",
+								"new":      "roger-azurevmdemo-nic",
+								"old":      "",
+							},
+							"network_security_group_id": {
+								"computed": false,
+								"new":      "",
 								"old":      "",
 							},
 							"private_ip_address": {
@@ -152,7 +105,119 @@ _modules = {
 							},
 							"resource_group_name": {
 								"computed": false,
-								"new":      "azurevmdemo-resources",
+								"new":      "tfe-set-rg",
+								"old":      "",
+							},
+							"tags.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"virtual_machine_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+					},
+					1: {
+						"applied": {
+							"enable_accelerated_networking": false,
+							"enable_ip_forwarding":          false,
+							"ip_configuration": [
+								{
+									"name":                          "testconfiguration1",
+									"private_ip_address":            null,
+									"private_ip_address_allocation": "dynamic",
+									"private_ip_address_version":    "IPv4",
+									"public_ip_address_id":          null,
+								},
+							],
+							"location": "eastus",
+							"name":     "roger-azurevmdemo-nic-2222",
+							"network_security_group_id": null,
+							"resource_group_name":       "tfe-set-rg",
+						},
+						"destroy": false,
+						"diff": {
+							"applied_dns_servers.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"dns_servers.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"enable_accelerated_networking": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"enable_ip_forwarding": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"internal_dns_name_label": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"internal_fqdn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ip_configuration.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"ip_configuration.0.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "eastus",
+								"old":      "",
+							},
+							"mac_address": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "roger-azurevmdemo-nic",
+								"old":      "",
+							},
+							"network_security_group_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"private_ip_address": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_ip_addresses.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"resource_group_name": {
+								"computed": false,
+								"new":      "tfe-set-rg",
 								"old":      "",
 							},
 							"tags.%": {
@@ -173,10 +238,8 @@ _modules = {
 				"main": {
 					0: {
 						"applied": {
-							"id":       "74D93920-ED26-11E3-AC10-0800200C9A66",
 							"location": "eastus",
-							"name":     "azurevmdemo-resources",
-							"tags":     {},
+							"name":     "tfe-set-rg",
 						},
 						"destroy": false,
 						"diff": {
@@ -192,7 +255,7 @@ _modules = {
 							},
 							"name": {
 								"computed": false,
-								"new":      "azurevmdemo-resources",
+								"new":      "tfe-set-rg",
 								"old":      "",
 							},
 							"tags.%": {
@@ -208,18 +271,25 @@ _modules = {
 				"internal": {
 					0: {
 						"applied": {
-							"address_prefix":       "10.0.2.0/24",
-							"id":                   "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"ip_configurations":    "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"name":                 "internal",
-							"resource_group_name":  "azurevmdemo-resources",
-							"virtual_network_name": "azurevmdemo-network",
+							"address_prefix": "10.0.2.0/24",
+							"delegation":     [],
+							"name":           "internal",
+							"network_security_group_id": null,
+							"resource_group_name":       "tfe-set-rg",
+							"route_table_id":            null,
+							"service_endpoints":         null,
+							"virtual_network_name":      "roger-azurevmdemo-network",
 						},
 						"destroy": false,
 						"diff": {
 							"address_prefix": {
 								"computed": false,
 								"new":      "10.0.2.0/24",
+								"old":      "",
+							},
+							"delegation.#": {
+								"computed": false,
+								"new":      "0",
 								"old":      "",
 							},
 							"id": {
@@ -237,14 +307,29 @@ _modules = {
 								"new":      "internal",
 								"old":      "",
 							},
+							"network_security_group_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
 							"resource_group_name": {
 								"computed": false,
-								"new":      "azurevmdemo-resources",
+								"new":      "tfe-set-rg",
+								"old":      "",
+							},
+							"route_table_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"service_endpoints": {
+								"computed": false,
+								"new":      "",
 								"old":      "",
 							},
 							"virtual_network_name": {
 								"computed": false,
-								"new":      "azurevmdemo-network",
+								"new":      "roger-azurevmdemo-network",
 								"old":      "",
 							},
 						},
@@ -255,20 +340,16 @@ _modules = {
 				"first": {
 					0: {
 						"applied": {
-							"availability_set_id":              "74D93920-ED26-11E3-AC10-0800200C9A66",
+							"boot_diagnostics":                 [],
 							"delete_data_disks_on_termination": true,
 							"delete_os_disk_on_termination":    true,
-							"id":                    "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"identity":              "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"location":              "eastus",
-							"name":                  "azurevmdemo-vm",
-							"network_interface_ids": "74D93920-ED26-11E3-AC10-0800200C9A66",
+							"location":                         "eastus",
+							"name":                             "roger-azurevmdemo-vm",
 							"os_profile": [
 								{
 									"admin_password": "REDACTED",
 									"admin_username": "testadmin",
 									"computer_name":  "hostname",
-									"custom_data":    "74D93920-ED26-11E3-AC10-0800200C9A66",
 								},
 							],
 							"os_profile_linux_config": [
@@ -277,8 +358,11 @@ _modules = {
 									"ssh_keys":                        [],
 								},
 							],
-							"resource_group_name": "azurevmdemo-resources",
-							"storage_data_disk":   "74D93920-ED26-11E3-AC10-0800200C9A66",
+							"os_profile_secrets":        [],
+							"os_profile_windows_config": [],
+							"plan": [],
+							"primary_network_interface_id": null,
+							"resource_group_name":          "tfe-set-rg",
 							"storage_image_reference": [
 								{
 									"id":        "",
@@ -290,25 +374,31 @@ _modules = {
 							],
 							"storage_os_disk": [
 								{
-									"caching":           "ReadWrite",
-									"create_option":     "FromImage",
-									"disk_size_gb":      "74D93920-ED26-11E3-AC10-0800200C9A66",
-									"managed_disk_id":   "74D93920-ED26-11E3-AC10-0800200C9A66",
-									"managed_disk_type": "Standard_LRS",
-									"name":              "myosdisk1",
+									"caching":                   "ReadWrite",
+									"create_option":             "FromImage",
+									"image_uri":                 null,
+									"managed_disk_type":         "Standard_LRS",
+									"name":                      "myosdisk1",
+									"vhd_uri":                   null,
 									"write_accelerator_enabled": false,
 								},
 							],
 							"tags": {
 								"environment": "staging",
 							},
-							"vm_size": "Standard_D1_v2",
+							"vm_size": "Basic_A0",
+							"zones":   null,
 						},
 						"destroy": false,
 						"diff": {
 							"availability_set_id": {
 								"computed": true,
 								"new":      "",
+								"old":      "",
+							},
+							"boot_diagnostics.#": {
+								"computed": false,
+								"new":      "0",
 								"old":      "",
 							},
 							"delete_data_disks_on_termination": {
@@ -331,6 +421,11 @@ _modules = {
 								"new":      "",
 								"old":      "",
 							},
+							"license_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
 							"location": {
 								"computed": false,
 								"new":      "eastus",
@@ -338,7 +433,7 @@ _modules = {
 							},
 							"name": {
 								"computed": false,
-								"new":      "azurevmdemo-vm",
+								"new":      "roger-azurevmdemo-vm",
 								"old":      "",
 							},
 							"network_interface_ids.#": {
@@ -351,22 +446,7 @@ _modules = {
 								"new":      "1",
 								"old":      "",
 							},
-							"os_profile.1173764063.admin_password": {
-								"computed": false,
-								"new":      "REDACTED",
-								"old":      "",
-							},
-							"os_profile.1173764063.admin_username": {
-								"computed": false,
-								"new":      "testadmin",
-								"old":      "",
-							},
-							"os_profile.1173764063.computer_name": {
-								"computed": false,
-								"new":      "hostname",
-								"old":      "",
-							},
-							"os_profile.1173764063.custom_data": {
+							"os_profile.0.%": {
 								"computed": true,
 								"new":      "",
 								"old":      "",
@@ -376,19 +456,44 @@ _modules = {
 								"new":      "1",
 								"old":      "",
 							},
-							"os_profile_linux_config.2972667452.disable_password_authentication": {
+							"os_profile_linux_config.0.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"os_profile_linux_config.0.disable_password_authentication": {
 								"computed": false,
 								"new":      "false",
 								"old":      "",
 							},
-							"os_profile_linux_config.2972667452.ssh_keys.#": {
+							"os_profile_linux_config.0.ssh_keys.#": {
 								"computed": false,
 								"new":      "0",
 								"old":      "",
 							},
+							"os_profile_secrets.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"os_profile_windows_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"plan.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"primary_network_interface_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
 							"resource_group_name": {
 								"computed": false,
-								"new":      "azurevmdemo-resources",
+								"new":      "tfe-set-rg",
 								"old":      "",
 							},
 							"storage_data_disk.#": {
@@ -401,27 +506,32 @@ _modules = {
 								"new":      "1",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.id": {
+							"storage_image_reference.0.%": {
+								"computed": false,
+								"new":      "5",
+								"old":      "",
+							},
+							"storage_image_reference.0.id": {
 								"computed": false,
 								"new":      "",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.offer": {
+							"storage_image_reference.0.offer": {
 								"computed": false,
 								"new":      "UbuntuServer",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.publisher": {
+							"storage_image_reference.0.publisher": {
 								"computed": false,
 								"new":      "Canonical",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.sku": {
+							"storage_image_reference.0.sku": {
 								"computed": false,
 								"new":      "16.04-LTS",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.version": {
+							"storage_image_reference.0.version": {
 								"computed": false,
 								"new":      "latest",
 								"old":      "",
@@ -431,39 +541,9 @@ _modules = {
 								"new":      "1",
 								"old":      "",
 							},
-							"storage_os_disk.0.caching": {
-								"computed": false,
-								"new":      "ReadWrite",
-								"old":      "",
-							},
-							"storage_os_disk.0.create_option": {
-								"computed": false,
-								"new":      "FromImage",
-								"old":      "",
-							},
-							"storage_os_disk.0.disk_size_gb": {
+							"storage_os_disk.0.%": {
 								"computed": true,
 								"new":      "",
-								"old":      "",
-							},
-							"storage_os_disk.0.managed_disk_id": {
-								"computed": true,
-								"new":      "",
-								"old":      "",
-							},
-							"storage_os_disk.0.managed_disk_type": {
-								"computed": false,
-								"new":      "Standard_LRS",
-								"old":      "",
-							},
-							"storage_os_disk.0.name": {
-								"computed": false,
-								"new":      "myosdisk1",
-								"old":      "",
-							},
-							"storage_os_disk.0.write_accelerator_enabled": {
-								"computed": false,
-								"new":      "false",
 								"old":      "",
 							},
 							"tags.%": {
@@ -478,7 +558,12 @@ _modules = {
 							},
 							"vm_size": {
 								"computed": false,
-								"new":      "Standard_D1_v2",
+								"new":      "Basic_A0",
+								"old":      "",
+							},
+							"zones": {
+								"computed": false,
+								"new":      "",
 								"old":      "",
 							},
 						},
@@ -487,20 +572,16 @@ _modules = {
 				"second": {
 					0: {
 						"applied": {
-							"availability_set_id":              "74D93920-ED26-11E3-AC10-0800200C9A66",
+							"boot_diagnostics":                 [],
 							"delete_data_disks_on_termination": true,
 							"delete_os_disk_on_termination":    true,
-							"id":                    "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"identity":              "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"location":              "eastus",
-							"name":                  "azurevmdemo-vm",
-							"network_interface_ids": "74D93920-ED26-11E3-AC10-0800200C9A66",
+							"location":                         "eastus",
+							"name":                             "roger-azurevmdemo-vm",
 							"os_profile": [
 								{
 									"admin_password": "REDACTED",
 									"admin_username": "testadmin",
 									"computer_name":  "hostname",
-									"custom_data":    "74D93920-ED26-11E3-AC10-0800200C9A66",
 								},
 							],
 							"os_profile_linux_config": [
@@ -509,8 +590,11 @@ _modules = {
 									"ssh_keys":                        [],
 								},
 							],
-							"resource_group_name": "azurevmdemo-resources",
-							"storage_data_disk":   "74D93920-ED26-11E3-AC10-0800200C9A66",
+							"os_profile_secrets":        [],
+							"os_profile_windows_config": [],
+							"plan": [],
+							"primary_network_interface_id": null,
+							"resource_group_name":          "tfe-set-rg",
 							"storage_image_reference": [
 								{
 									"id":        "",
@@ -522,25 +606,31 @@ _modules = {
 							],
 							"storage_os_disk": [
 								{
-									"caching":           "ReadWrite",
-									"create_option":     "FromImage",
-									"disk_size_gb":      "74D93920-ED26-11E3-AC10-0800200C9A66",
-									"managed_disk_id":   "74D93920-ED26-11E3-AC10-0800200C9A66",
-									"managed_disk_type": "Standard_LRS",
-									"name":              "myosdisk1",
+									"caching":                   "ReadWrite",
+									"create_option":             "FromImage",
+									"image_uri":                 null,
+									"managed_disk_type":         "Standard_LRS",
+									"name":                      "myosdisk1",
+									"vhd_uri":                   null,
 									"write_accelerator_enabled": false,
 								},
 							],
 							"tags": {
 								"environment": "staging",
 							},
-							"vm_size": "Standard_D1_v2",
+							"vm_size": "Basic_A0",
+							"zones":   null,
 						},
 						"destroy": false,
 						"diff": {
 							"availability_set_id": {
 								"computed": true,
 								"new":      "",
+								"old":      "",
+							},
+							"boot_diagnostics.#": {
+								"computed": false,
+								"new":      "0",
 								"old":      "",
 							},
 							"delete_data_disks_on_termination": {
@@ -563,6 +653,11 @@ _modules = {
 								"new":      "",
 								"old":      "",
 							},
+							"license_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
 							"location": {
 								"computed": false,
 								"new":      "eastus",
@@ -570,7 +665,7 @@ _modules = {
 							},
 							"name": {
 								"computed": false,
-								"new":      "azurevmdemo-vm",
+								"new":      "roger-azurevmdemo-vm",
 								"old":      "",
 							},
 							"network_interface_ids.#": {
@@ -583,22 +678,7 @@ _modules = {
 								"new":      "1",
 								"old":      "",
 							},
-							"os_profile.1173764063.admin_password": {
-								"computed": false,
-								"new":      "REDACTED",
-								"old":      "",
-							},
-							"os_profile.1173764063.admin_username": {
-								"computed": false,
-								"new":      "testadmin",
-								"old":      "",
-							},
-							"os_profile.1173764063.computer_name": {
-								"computed": false,
-								"new":      "hostname",
-								"old":      "",
-							},
-							"os_profile.1173764063.custom_data": {
+							"os_profile.0.%": {
 								"computed": true,
 								"new":      "",
 								"old":      "",
@@ -608,19 +688,44 @@ _modules = {
 								"new":      "1",
 								"old":      "",
 							},
-							"os_profile_linux_config.2972667452.disable_password_authentication": {
+							"os_profile_linux_config.0.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"os_profile_linux_config.0.disable_password_authentication": {
 								"computed": false,
 								"new":      "false",
 								"old":      "",
 							},
-							"os_profile_linux_config.2972667452.ssh_keys.#": {
+							"os_profile_linux_config.0.ssh_keys.#": {
 								"computed": false,
 								"new":      "0",
 								"old":      "",
 							},
+							"os_profile_secrets.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"os_profile_windows_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"plan.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"primary_network_interface_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
 							"resource_group_name": {
 								"computed": false,
-								"new":      "azurevmdemo-resources",
+								"new":      "tfe-set-rg",
 								"old":      "",
 							},
 							"storage_data_disk.#": {
@@ -633,27 +738,32 @@ _modules = {
 								"new":      "1",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.id": {
+							"storage_image_reference.0.%": {
+								"computed": false,
+								"new":      "5",
+								"old":      "",
+							},
+							"storage_image_reference.0.id": {
 								"computed": false,
 								"new":      "",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.offer": {
+							"storage_image_reference.0.offer": {
 								"computed": false,
 								"new":      "UbuntuServer",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.publisher": {
+							"storage_image_reference.0.publisher": {
 								"computed": false,
 								"new":      "Canonical",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.sku": {
+							"storage_image_reference.0.sku": {
 								"computed": false,
 								"new":      "16.04-LTS",
 								"old":      "",
 							},
-							"storage_image_reference.1458860473.version": {
+							"storage_image_reference.0.version": {
 								"computed": false,
 								"new":      "latest",
 								"old":      "",
@@ -663,39 +773,9 @@ _modules = {
 								"new":      "1",
 								"old":      "",
 							},
-							"storage_os_disk.0.caching": {
-								"computed": false,
-								"new":      "ReadWrite",
-								"old":      "",
-							},
-							"storage_os_disk.0.create_option": {
-								"computed": false,
-								"new":      "FromImage",
-								"old":      "",
-							},
-							"storage_os_disk.0.disk_size_gb": {
+							"storage_os_disk.0.%": {
 								"computed": true,
 								"new":      "",
-								"old":      "",
-							},
-							"storage_os_disk.0.managed_disk_id": {
-								"computed": true,
-								"new":      "",
-								"old":      "",
-							},
-							"storage_os_disk.0.managed_disk_type": {
-								"computed": false,
-								"new":      "Standard_LRS",
-								"old":      "",
-							},
-							"storage_os_disk.0.name": {
-								"computed": false,
-								"new":      "myosdisk1",
-								"old":      "",
-							},
-							"storage_os_disk.0.write_accelerator_enabled": {
-								"computed": false,
-								"new":      "false",
 								"old":      "",
 							},
 							"tags.%": {
@@ -710,7 +790,12 @@ _modules = {
 							},
 							"vm_size": {
 								"computed": false,
-								"new":      "Standard_D1_v2",
+								"new":      "Basic_A0",
+								"old":      "",
+							},
+							"zones": {
+								"computed": false,
+								"new":      "",
 								"old":      "",
 							},
 						},
@@ -724,12 +809,11 @@ _modules = {
 							"address_space": [
 								"10.0.0.0/16",
 							],
-							"id":                  "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"location":            "eastus",
-							"name":                "azurevmdemo-network",
-							"resource_group_name": "azurevmdemo-resources",
-							"subnet":              "74D93920-ED26-11E3-AC10-0800200C9A66",
-							"tags":                {},
+							"ddos_protection_plan": [],
+							"dns_servers":          null,
+							"location":             "eastus",
+							"name":                 "roger-azurevmdemo-network",
+							"resource_group_name":  "tfe-set-rg",
 						},
 						"destroy": false,
 						"diff": {
@@ -741,6 +825,16 @@ _modules = {
 							"address_space.0": {
 								"computed": false,
 								"new":      "10.0.0.0/16",
+								"old":      "",
+							},
+							"ddos_protection_plan.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"dns_servers": {
+								"computed": false,
+								"new":      "",
 								"old":      "",
 							},
 							"id": {
@@ -755,12 +849,12 @@ _modules = {
 							},
 							"name": {
 								"computed": false,
-								"new":      "azurevmdemo-network",
+								"new":      "roger-azurevmdemo-network",
 								"old":      "",
 							},
 							"resource_group_name": {
 								"computed": false,
-								"new":      "azurevmdemo-resources",
+								"new":      "tfe-set-rg",
 								"old":      "",
 							},
 							"subnet.#": {
@@ -785,18 +879,29 @@ module_paths = [
 	[],
 ]
 
-terraform_version = "0.11.13"
+terraform_version = "0.12.3"
 
 variables = {
-	"prefix": "azurevmdemo",
+	"prefix":  "roger-azurevmdemo",
+	"vm_size": "Basic_A0",
 }
 
 module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
 	if length(path) < 1 {
 		return _modules.root
 	}
 
-	return _modules[strings.join(["module", path], ".")]
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
 }
 
 data = _modules.root.data
