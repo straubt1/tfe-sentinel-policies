@@ -1,0 +1,92 @@
+import "tfrun"
+import "http"
+import "json"
+import "strings"
+
+param tfe_token
+param tfe_hostname
+param tfe_organization
+param log_level default "info" // [info, debug, trace, all]
+
+log = func(message, level){
+	if (log_level is "all") or (level is log_level) {
+		print("[" + level + "]", message)
+	}
+	return null
+}
+
+// Call the TFE API to retrieve all Policy Sets
+get_policy_sets = func() {
+	// TODO: update to get every page if there are more than 100 Policy Sets
+	full_url = "https://" + tfe_hostname +
+		"/api/v2/organizations/" + tfe_organization + 
+		"/policy-sets?page[number]=1&page[count]=100"
+
+	log(full_url, "debug")
+	req = http.request(full_url).
+		with_header("Authorization",  "Bearer " + tfe_token)
+	resp = http.accept_status_codes([200]).get(req)
+	body = json.unmarshal(resp.body)
+	log(body, "trace")
+
+	return body.data
+}
+
+// Call the TFE API to retrieve the WS Id from WS Name
+get_workspace_id = func(workspace_name) {
+	full_url = "https://" + tfe_hostname +
+		"/api/v2/organizations/" + tfe_organization + 
+		"/workspaces/" + workspace_name
+
+	log(full_url, "debug")
+	req = http.request(full_url).
+		with_header("Authorization",  "Bearer " + tfe_token)
+	resp = http.accept_status_codes([200, 401]).get(req)
+	body = json.unmarshal(resp.body)
+	log(body, "trace")
+
+	return body.data.id
+}
+
+// Given a policy ID, verify that there is at least one non-global Policy Set that has this WS Id
+workspace_has_policy = func(workspace_name) {
+	log("Workspace Name: " + workspace_name, "info")
+
+	workspace_id = get_workspace_id(workspace_name)
+	log("Workspace Id: " + workspace_id, "info")
+	policies = get_policy_sets()
+
+	for policies as ps {
+		if ps.attributes.global else false is true {
+			log("Skipping global policy set: " + ps.attributes.name, "info")
+			continue
+		}
+
+		has_policy = is_workspace_id_present(ps.relationships.workspaces.data, workspace_id)
+		if has_policy { 
+			return true
+		}
+	}
+
+	return false
+}
+
+// Given the complex workspaces.data object, look for WS Id
+is_workspace_id_present = func(data, workspace_id) {
+	is_present = false
+	for data as d {
+		if(d.id is workspace_id) {
+			is_present = true
+		}
+	}
+	return is_present
+}
+
+### Rules ###
+
+workspace_validated = workspace_has_policy(tfrun.workspace.name)
+
+# Main rule
+main = rule {
+	workspace_validated
+}
