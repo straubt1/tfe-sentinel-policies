@@ -62,11 +62,13 @@ workspace_has_policy = func(tfe_organization, workspace_name) {
 		}
 
 		has_policy = is_workspace_id_present(ps.relationships.workspaces.data, workspace_id)
-		if has_policy { 
+		if has_policy {
+				print("Workspace", workspace_name, "was found in the policy set", ps.attributes.name)
 			return true
 		}
 	}
 
+	print("Workspace", workspace_name, "was not found in any NON-Global policy sets!")
 	return false
 }
 
