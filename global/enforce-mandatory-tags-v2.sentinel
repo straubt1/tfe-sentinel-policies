@@ -1,0 +1,71 @@
+# This policy uses the Sentinel tfplan import to require that all given resources
+# have all mandatory tags.
+
+##### Imports #####
+
+import "tfplan/v2" as tfplan
+import "strings"
+import "types"
+
+##### Parameters #####
+
+param resource_type default "azurerm_resource_group"
+param mandatory_tags default [
+	"environment",
+]
+
+print("Using the following parameters",
+	"{resource_type}", resource_type,
+	"{mandatory_tags}", mandatory_tags)
+
+##### Functions #####
+
+# Validate that all instances of specified type have a specified top-level
+# attribute that contains all members of a given list
+validate_attribute_contains_list = func(type, attribute, required_values) {
+
+	validated = true
+
+	# Get all resource instances of the specified type
+	all_resource_instances = filter tfplan.resource_changes as _, rc {
+    rc.type is type and
+		// Filter on things to be created or updated, ignoring no-op and deletes
+		(rc.change.actions contains "create" or rc.change.actions contains "update")
+	}
+
+	for all_resource_instances as address, r {
+		// Ensure attribute is list or map
+		if r.change.after[attribute] else null is not null and
+			(types.type_of(r.change.after[attribute]) is "list" or
+				types.type_of(r.change.after[attribute]) is "map") {
+
+			// Evaluate each member of required_values list
+			for required_values as rv {
+				if r.change.after[attribute] not contains rv {
+					print("Resource", address, "has attribute", attribute,
+						"that is missing required value", rv, "from the list:",
+						required_values)
+					validated = false
+				}
+			} // end required_values
+
+		} else {
+			print("Resource", address, "is missing attribute", attribute,
+				"or it is not a list or a map")
+			validated = false
+		}
+	}
+
+	return validated
+}
+
+### Rules ###
+
+# Call the validation function
+tags_validated = validate_attribute_contains_list(resource_type,
+	"tags", mandatory_tags)
+
+#Main rule
+main = rule {
+	tags_validated
+}

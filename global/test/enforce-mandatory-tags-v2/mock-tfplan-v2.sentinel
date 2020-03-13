@@ -1,0 +1,888 @@
+terraform_version = "0.12.23"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"module.networking.azurerm_resource_group.module": {
+			"address":        "module.networking.azurerm_resource_group.module",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.networking",
+			"name":           "module",
+			"provider_name":  "azurerm",
+			"tainted":        false,
+			"type":           "azurerm_resource_group",
+			"values": {
+				"location": "centralus",
+				"name":     "hashicorp-networking-rg",
+				"tags": {
+					"environment": "dev",
+					"version":     "v0.12.0",
+				},
+				"timeouts": null,
+			},
+		},
+		"module.networking.azurerm_subnet.module[0]": {
+			"address":        "module.networking.azurerm_subnet.module[0]",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          0,
+			"mode":           "managed",
+			"module_address": "module.networking",
+			"name":           "module",
+			"provider_name":  "azurerm",
+			"tainted":        false,
+			"type":           "azurerm_subnet",
+			"values": {
+				"address_prefix": "10.0.1.0/24",
+				"delegation":     [],
+				"enforce_private_link_endpoint_network_policies": false,
+				"enforce_private_link_service_network_policies":  false,
+				"name":                 "hashicorp-networking-subnet0",
+				"resource_group_name":  "hashicorp-networking-rg",
+				"service_endpoints":    null,
+				"timeouts":             null,
+				"virtual_network_name": "hashicorp-networking-vnet",
+			},
+		},
+		"module.networking.azurerm_subnet.module[1]": {
+			"address":        "module.networking.azurerm_subnet.module[1]",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          1,
+			"mode":           "managed",
+			"module_address": "module.networking",
+			"name":           "module",
+			"provider_name":  "azurerm",
+			"tainted":        false,
+			"type":           "azurerm_subnet",
+			"values": {
+				"address_prefix": "10.0.2.0/24",
+				"delegation":     [],
+				"enforce_private_link_endpoint_network_policies": false,
+				"enforce_private_link_service_network_policies":  false,
+				"name":                 "hashicorp-networking-subnet1",
+				"resource_group_name":  "hashicorp-networking-rg",
+				"service_endpoints":    null,
+				"timeouts":             null,
+				"virtual_network_name": "hashicorp-networking-vnet",
+			},
+		},
+		"module.networking.azurerm_virtual_network.module": {
+			"address":        "module.networking.azurerm_virtual_network.module",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.networking",
+			"name":           "module",
+			"provider_name":  "azurerm",
+			"tainted":        false,
+			"type":           "azurerm_virtual_network",
+			"values": {
+				"address_space": [
+					"10.0.0.0/16",
+				],
+				"ddos_protection_plan": [],
+				"dns_servers":          null,
+				"location":             "centralus",
+				"name":                 "hashicorp-networking-vnet",
+				"resource_group_name":  "hashicorp-networking-rg",
+				"tags": {
+					"environment": "dev",
+				},
+				"timeouts": null,
+			},
+		},
+		"module.vm_linux.random_uuid.main": {
+			"address":        "module.vm_linux.random_uuid.main",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.vm_linux",
+			"name":           "main",
+			"provider_name":  "random",
+			"tainted":        false,
+			"type":           "random_uuid",
+			"values": {
+				"id":      "b3055a57-7a47-d134-2197-89aeebcf9719",
+				"keepers": null,
+				"result":  "b3055a57-7a47-d134-2197-89aeebcf9719",
+			},
+		},
+		"random_uuid.main": {
+			"address":        "random_uuid.main",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "main",
+			"provider_name":  "random",
+			"tainted":        false,
+			"type":           "random_uuid",
+			"values": {
+				"id":      "8d40ac31-51e9-4beb-789e-08719d56863a",
+				"keepers": null,
+				"result":  "8d40ac31-51e9-4beb-789e-08719d56863a",
+			},
+		},
+	},
+}
+
+variables = {
+	"resource_group_name": {
+		"name":  "resource_group_name",
+		"value": "tom-from-CI-rg",
+	},
+}
+
+resource_changes = {
+	"module.networking.azurerm_resource_group.module": {
+		"address": "module.networking.azurerm_resource_group.module",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"location": "centralus",
+				"name":     "hashicorp-networking-rg",
+				"tags": {
+					"environment": "dev",
+					"version":     "v0.12.0",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"id":   true,
+				"tags": {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.networking",
+		"name":           "module",
+		"provider_name":  "azurerm",
+		"type":           "azurerm_resource_group",
+	},
+	"module.networking.azurerm_subnet.module[0]": {
+		"address": "module.networking.azurerm_subnet.module[0]",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"address_prefix": "10.0.1.0/24",
+				"delegation":     [],
+				"enforce_private_link_endpoint_network_policies": false,
+				"enforce_private_link_service_network_policies":  false,
+				"name":                 "hashicorp-networking-subnet0",
+				"resource_group_name":  "hashicorp-networking-rg",
+				"service_endpoints":    null,
+				"timeouts":             null,
+				"virtual_network_name": "hashicorp-networking-vnet",
+			},
+			"after_unknown": {
+				"delegation": [],
+				"id":         true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          0,
+		"mode":           "managed",
+		"module_address": "module.networking",
+		"name":           "module",
+		"provider_name":  "azurerm",
+		"type":           "azurerm_subnet",
+	},
+	"module.networking.azurerm_subnet.module[1]": {
+		"address": "module.networking.azurerm_subnet.module[1]",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"address_prefix": "10.0.2.0/24",
+				"delegation":     [],
+				"enforce_private_link_endpoint_network_policies": false,
+				"enforce_private_link_service_network_policies":  false,
+				"name":                 "hashicorp-networking-subnet1",
+				"resource_group_name":  "hashicorp-networking-rg",
+				"service_endpoints":    null,
+				"timeouts":             null,
+				"virtual_network_name": "hashicorp-networking-vnet",
+			},
+			"after_unknown": {
+				"delegation": [],
+				"id":         true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          1,
+		"mode":           "managed",
+		"module_address": "module.networking",
+		"name":           "module",
+		"provider_name":  "azurerm",
+		"type":           "azurerm_subnet",
+	},
+	"module.networking.azurerm_virtual_network.module": {
+		"address": "module.networking.azurerm_virtual_network.module",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"address_space": [
+					"10.0.0.0/16",
+				],
+				"ddos_protection_plan": [],
+				"dns_servers":          null,
+				"location":             "centralus",
+				"name":                 "hashicorp-networking-vnet",
+				"resource_group_name":  "hashicorp-networking-rg",
+				"tags": {
+					"environment": "dev",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"address_space": [
+					false,
+				],
+				"ddos_protection_plan": [],
+				"id":     true,
+				"subnet": true,
+				"tags":   {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.networking",
+		"name":           "module",
+		"provider_name":  "azurerm",
+		"type":           "azurerm_virtual_network",
+	},
+	"module.vm_linux.random_uuid.main": {
+		"address": "module.vm_linux.random_uuid.main",
+		"change": {
+			"actions": [
+				"no-op",
+			],
+			"after": {
+				"id":      "b3055a57-7a47-d134-2197-89aeebcf9719",
+				"keepers": null,
+				"result":  "b3055a57-7a47-d134-2197-89aeebcf9719",
+			},
+			"after_unknown": {},
+			"before": {
+				"id":      "b3055a57-7a47-d134-2197-89aeebcf9719",
+				"keepers": null,
+				"result":  "b3055a57-7a47-d134-2197-89aeebcf9719",
+			},
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.vm_linux",
+		"name":           "main",
+		"provider_name":  "random",
+		"type":           "random_uuid",
+	},
+	"random_uuid.main": {
+		"address": "random_uuid.main",
+		"change": {
+			"actions": [
+				"no-op",
+			],
+			"after": {
+				"id":      "8d40ac31-51e9-4beb-789e-08719d56863a",
+				"keepers": null,
+				"result":  "8d40ac31-51e9-4beb-789e-08719d56863a",
+			},
+			"after_unknown": {},
+			"before": {
+				"id":      "8d40ac31-51e9-4beb-789e-08719d56863a",
+				"keepers": null,
+				"result":  "8d40ac31-51e9-4beb-789e-08719d56863a",
+			},
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "main",
+		"provider_name":  "random",
+		"type":           "random_uuid",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"azurerm": {
+				"expressions": {
+					"features": [
+						{},
+					],
+				},
+				"name": "azurerm",
+			},
+		},
+		"root_module": {
+			"module_calls": {
+				"networking": {
+					"expressions": {
+						"location": {
+							"constant_value": "centralus",
+						},
+						"name": {
+							"constant_value": "hashicorp",
+						},
+						"subnet_address_prefixes": {
+							"constant_value": [
+								"10.0.1.0/24",
+								"10.0.2.0/24",
+							],
+						},
+						"vnet_address_spacing": {
+							"constant_value": [
+								"10.0.0.0/16",
+							],
+						},
+					},
+					"module": {
+						"outputs": {
+							"subnet-ids": {
+								"description": "Id's of the Subnets",
+								"expression": {
+									"references": [
+										"azurerm_subnet.module",
+									],
+								},
+							},
+							"virtualnetwork-ids": {
+								"description": "Id of the Vnet",
+								"expression": {
+									"references": [
+										"azurerm_virtual_network.module",
+									],
+								},
+							},
+						},
+						"resources": [
+							{
+								"address": "azurerm_resource_group.module",
+								"expressions": {
+									"location": {
+										"references": [
+											"var.location",
+										],
+									},
+									"name": {
+										"references": [
+											"local.module_name",
+										],
+									},
+									"tags": {
+										"constant_value": {
+											"environment": "dev",
+											"version":     "v0.12.0",
+										},
+									},
+								},
+								"mode":                "managed",
+								"name":                "module",
+								"provider_config_key": "networking:azurerm",
+								"schema_version":      0,
+								"type":                "azurerm_resource_group",
+							},
+							{
+								"address": "azurerm_subnet.module",
+								"count_expression": {
+									"references": [
+										"var.subnet_address_prefixes",
+									],
+								},
+								"expressions": {
+									"address_prefix": {
+										"references": [
+											"var.subnet_address_prefixes",
+											"count.index",
+										],
+									},
+									"name": {
+										"references": [
+											"local.module_name",
+											"count.index",
+										],
+									},
+									"resource_group_name": {
+										"references": [
+											"azurerm_resource_group.module",
+										],
+									},
+									"virtual_network_name": {
+										"references": [
+											"azurerm_virtual_network.module",
+										],
+									},
+								},
+								"mode":                "managed",
+								"name":                "module",
+								"provider_config_key": "networking:azurerm",
+								"schema_version":      0,
+								"type":                "azurerm_subnet",
+							},
+							{
+								"address": "azurerm_virtual_network.module",
+								"expressions": {
+									"address_space": {
+										"references": [
+											"var.vnet_address_spacing",
+										],
+									},
+									"location": {
+										"references": [
+											"azurerm_resource_group.module",
+										],
+									},
+									"name": {
+										"references": [
+											"local.module_name",
+										],
+									},
+									"resource_group_name": {
+										"references": [
+											"azurerm_resource_group.module",
+										],
+									},
+									"tags": {
+										"constant_value": {
+											"environment": "dev",
+										},
+									},
+								},
+								"mode":                "managed",
+								"name":                "module",
+								"provider_config_key": "networking:azurerm",
+								"schema_version":      0,
+								"type":                "azurerm_virtual_network",
+							},
+						],
+						"variables": {
+							"location": {
+								"description": "The Azure location to create all resources in.",
+							},
+							"name": {
+								"description": "A unique name that identifies the purpose of this Resource Group.",
+							},
+							"subnet_address_prefixes": {
+								"description": "List of Subnet Address Prefixes. Each prefix will result in a new Subnet",
+							},
+							"vnet_address_spacing": {
+								"description": "List of Address Spaces for the Virtual Network",
+							},
+						},
+					},
+					"source": "github.com/azure-terraform-workshop/terraform-azurerm-networking.git",
+				},
+				"vm_linux": {
+					"expressions": {
+						"resource_group_name": {
+							"constant_value": "force-rg",
+						},
+					},
+					"module": {
+						"resources": [
+							{
+								"address":             "random_uuid.main",
+								"mode":                "managed",
+								"name":                "main",
+								"provider_config_key": "vm_linux:random",
+								"schema_version":      0,
+								"type":                "random_uuid",
+							},
+						],
+						"variables": {
+							"resource_group_name": {},
+						},
+					},
+					"source": "./modules/vm",
+				},
+			},
+			"resources": [
+				{
+					"address":             "random_uuid.main",
+					"mode":                "managed",
+					"name":                "main",
+					"provider_config_key": "random",
+					"schema_version":      0,
+					"type":                "random_uuid",
+				},
+			],
+			"variables": {
+				"resource_group_name": {},
+			},
+		},
+	},
+	"format_version": "0.1",
+	"planned_values": {
+		"root_module": {
+			"child_modules": [
+				{
+					"address": "module.networking",
+					"resources": [
+						{
+							"address":        "module.networking.azurerm_resource_group.module",
+							"mode":           "managed",
+							"name":           "module",
+							"provider_name":  "azurerm",
+							"schema_version": 0,
+							"type":           "azurerm_resource_group",
+							"values": {
+								"location": "centralus",
+								"name":     "hashicorp-networking-rg",
+								"tags": {
+									"environment": "dev",
+									"version":     "v0.12.0",
+								},
+								"timeouts": null,
+							},
+						},
+						{
+							"address":        "module.networking.azurerm_subnet.module[0]",
+							"index":          0,
+							"mode":           "managed",
+							"name":           "module",
+							"provider_name":  "azurerm",
+							"schema_version": 0,
+							"type":           "azurerm_subnet",
+							"values": {
+								"address_prefix": "10.0.1.0/24",
+								"delegation":     [],
+								"enforce_private_link_endpoint_network_policies": false,
+								"enforce_private_link_service_network_policies":  false,
+								"name":                 "hashicorp-networking-subnet0",
+								"resource_group_name":  "hashicorp-networking-rg",
+								"service_endpoints":    null,
+								"timeouts":             null,
+								"virtual_network_name": "hashicorp-networking-vnet",
+							},
+						},
+						{
+							"address":        "module.networking.azurerm_subnet.module[1]",
+							"index":          1,
+							"mode":           "managed",
+							"name":           "module",
+							"provider_name":  "azurerm",
+							"schema_version": 0,
+							"type":           "azurerm_subnet",
+							"values": {
+								"address_prefix": "10.0.2.0/24",
+								"delegation":     [],
+								"enforce_private_link_endpoint_network_policies": false,
+								"enforce_private_link_service_network_policies":  false,
+								"name":                 "hashicorp-networking-subnet1",
+								"resource_group_name":  "hashicorp-networking-rg",
+								"service_endpoints":    null,
+								"timeouts":             null,
+								"virtual_network_name": "hashicorp-networking-vnet",
+							},
+						},
+						{
+							"address":        "module.networking.azurerm_virtual_network.module",
+							"mode":           "managed",
+							"name":           "module",
+							"provider_name":  "azurerm",
+							"schema_version": 0,
+							"type":           "azurerm_virtual_network",
+							"values": {
+								"address_space": [
+									"10.0.0.0/16",
+								],
+								"ddos_protection_plan": [],
+								"dns_servers":          null,
+								"location":             "centralus",
+								"name":                 "hashicorp-networking-vnet",
+								"resource_group_name":  "hashicorp-networking-rg",
+								"tags": {
+									"environment": "dev",
+								},
+								"timeouts": null,
+							},
+						},
+					],
+				},
+				{
+					"address": "module.vm_linux",
+					"resources": [
+						{
+							"address":        "module.vm_linux.random_uuid.main",
+							"mode":           "managed",
+							"name":           "main",
+							"provider_name":  "random",
+							"schema_version": 0,
+							"type":           "random_uuid",
+							"values": {
+								"id":      "b3055a57-7a47-d134-2197-89aeebcf9719",
+								"keepers": null,
+								"result":  "b3055a57-7a47-d134-2197-89aeebcf9719",
+							},
+						},
+					],
+				},
+			],
+			"resources": [
+				{
+					"address":        "random_uuid.main",
+					"mode":           "managed",
+					"name":           "main",
+					"provider_name":  "random",
+					"schema_version": 0,
+					"type":           "random_uuid",
+					"values": {
+						"id":      "8d40ac31-51e9-4beb-789e-08719d56863a",
+						"keepers": null,
+						"result":  "8d40ac31-51e9-4beb-789e-08719d56863a",
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "0.1",
+		"terraform_version": "0.12.23",
+		"values": {
+			"root_module": {
+				"child_modules": [
+					{
+						"address": "module.networking",
+					},
+					{
+						"address": "module.vm_linux",
+						"resources": [
+							{
+								"address":        "random_uuid.main",
+								"mode":           "managed",
+								"name":           "main",
+								"provider_name":  "random",
+								"schema_version": 0,
+								"type":           "random_uuid",
+								"values": {
+									"id":      "b3055a57-7a47-d134-2197-89aeebcf9719",
+									"keepers": null,
+									"result":  "b3055a57-7a47-d134-2197-89aeebcf9719",
+								},
+							},
+						],
+					},
+				],
+				"resources": [
+					{
+						"address":        "random_uuid.main",
+						"mode":           "managed",
+						"name":           "main",
+						"provider_name":  "random",
+						"schema_version": 0,
+						"type":           "random_uuid",
+						"values": {
+							"id":      "8d40ac31-51e9-4beb-789e-08719d56863a",
+							"keepers": null,
+							"result":  "8d40ac31-51e9-4beb-789e-08719d56863a",
+						},
+					},
+				],
+			},
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "module.networking.azurerm_resource_group.module",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"location": "centralus",
+					"name":     "hashicorp-networking-rg",
+					"tags": {
+						"environment": "dev",
+						"version":     "v0.12.0",
+					},
+					"timeouts": null,
+				},
+				"after_unknown": {
+					"id":   true,
+					"tags": {},
+				},
+				"before": null,
+			},
+			"mode":           "managed",
+			"module_address": "module.networking",
+			"name":           "module",
+			"provider_name":  "azurerm",
+			"type":           "azurerm_resource_group",
+		},
+		{
+			"address": "module.networking.azurerm_subnet.module[0]",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"address_prefix": "10.0.1.0/24",
+					"delegation":     [],
+					"enforce_private_link_endpoint_network_policies": false,
+					"enforce_private_link_service_network_policies":  false,
+					"name":                 "hashicorp-networking-subnet0",
+					"resource_group_name":  "hashicorp-networking-rg",
+					"service_endpoints":    null,
+					"timeouts":             null,
+					"virtual_network_name": "hashicorp-networking-vnet",
+				},
+				"after_unknown": {
+					"delegation": [],
+					"id":         true,
+				},
+				"before": null,
+			},
+			"index":          0,
+			"mode":           "managed",
+			"module_address": "module.networking",
+			"name":           "module",
+			"provider_name":  "azurerm",
+			"type":           "azurerm_subnet",
+		},
+		{
+			"address": "module.networking.azurerm_subnet.module[1]",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"address_prefix": "10.0.2.0/24",
+					"delegation":     [],
+					"enforce_private_link_endpoint_network_policies": false,
+					"enforce_private_link_service_network_policies":  false,
+					"name":                 "hashicorp-networking-subnet1",
+					"resource_group_name":  "hashicorp-networking-rg",
+					"service_endpoints":    null,
+					"timeouts":             null,
+					"virtual_network_name": "hashicorp-networking-vnet",
+				},
+				"after_unknown": {
+					"delegation": [],
+					"id":         true,
+				},
+				"before": null,
+			},
+			"index":          1,
+			"mode":           "managed",
+			"module_address": "module.networking",
+			"name":           "module",
+			"provider_name":  "azurerm",
+			"type":           "azurerm_subnet",
+		},
+		{
+			"address": "module.networking.azurerm_virtual_network.module",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"address_space": [
+						"10.0.0.0/16",
+					],
+					"ddos_protection_plan": [],
+					"dns_servers":          null,
+					"location":             "centralus",
+					"name":                 "hashicorp-networking-vnet",
+					"resource_group_name":  "hashicorp-networking-rg",
+					"tags": {
+						"environment": "dev",
+					},
+					"timeouts": null,
+				},
+				"after_unknown": {
+					"address_space": [
+						false,
+					],
+					"ddos_protection_plan": [],
+					"id":     true,
+					"subnet": true,
+					"tags":   {},
+				},
+				"before": null,
+			},
+			"mode":           "managed",
+			"module_address": "module.networking",
+			"name":           "module",
+			"provider_name":  "azurerm",
+			"type":           "azurerm_virtual_network",
+		},
+		{
+			"address": "module.vm_linux.random_uuid.main",
+			"change": {
+				"actions": [
+					"no-op",
+				],
+				"after": {
+					"id":      "b3055a57-7a47-d134-2197-89aeebcf9719",
+					"keepers": null,
+					"result":  "b3055a57-7a47-d134-2197-89aeebcf9719",
+				},
+				"after_unknown": {},
+				"before": {
+					"id":      "b3055a57-7a47-d134-2197-89aeebcf9719",
+					"keepers": null,
+					"result":  "b3055a57-7a47-d134-2197-89aeebcf9719",
+				},
+			},
+			"mode":           "managed",
+			"module_address": "module.vm_linux",
+			"name":           "main",
+			"provider_name":  "random",
+			"type":           "random_uuid",
+		},
+		{
+			"address": "random_uuid.main",
+			"change": {
+				"actions": [
+					"no-op",
+				],
+				"after": {
+					"id":      "8d40ac31-51e9-4beb-789e-08719d56863a",
+					"keepers": null,
+					"result":  "8d40ac31-51e9-4beb-789e-08719d56863a",
+				},
+				"after_unknown": {},
+				"before": {
+					"id":      "8d40ac31-51e9-4beb-789e-08719d56863a",
+					"keepers": null,
+					"result":  "8d40ac31-51e9-4beb-789e-08719d56863a",
+				},
+			},
+			"mode":          "managed",
+			"name":          "main",
+			"provider_name": "random",
+			"type":          "random_uuid",
+		},
+	],
+	"terraform_version": "0.12.23",
+	"variables": {
+		"resource_group_name": {
+			"value": "tom-from-CI-rg",
+		},
+	},
+}
