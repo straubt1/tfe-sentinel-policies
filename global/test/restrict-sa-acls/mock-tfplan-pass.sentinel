@@ -1,0 +1,378 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"azurerm_resource_group": {
+				"example": {
+					0: {
+						"applied": {
+							"location": "centralus",
+							"name":     "example-resources",
+							"tags":     null,
+							"timeouts": null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "centralus",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "example-resources",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"azurerm_storage_account": {
+				"example": {
+					0: {
+						"applied": {
+							"account_kind":              "StorageV2",
+							"account_replication_type":  "LRS",
+							"account_tier":              "Standard",
+							"custom_domain":             [],
+							"enable_https_traffic_only": true,
+							"is_hns_enabled":            false,
+							"location":                  "centralus",
+							"name":                      "storageaccountname",
+							"network_rules": [
+								{
+									"default_action": "Deny",
+									"ip_rules": [
+										"100.0.0.1",
+										"100.0.0.2",
+										"100.0.0.3",
+									],
+								},
+							],
+							"resource_group_name": "example-resources",
+							"static_website":      [],
+							"tags": {
+								"environment": "staging",
+							},
+							"timeouts": null,
+						},
+						"destroy": false,
+						"diff": {
+							"access_tier": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"account_kind": {
+								"computed": false,
+								"new":      "StorageV2",
+								"old":      "",
+							},
+							"account_replication_type": {
+								"computed": false,
+								"new":      "LRS",
+								"old":      "",
+							},
+							"account_tier": {
+								"computed": false,
+								"new":      "Standard",
+								"old":      "",
+							},
+							"blob_properties.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"custom_domain.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"enable_https_traffic_only": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"identity.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"is_hns_enabled": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "centralus",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "storageaccountname",
+								"old":      "",
+							},
+							"network_rules.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"network_rules.0.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_access_key": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_blob_connection_string": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_blob_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_blob_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_connection_string": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_dfs_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_dfs_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_file_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_file_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_location": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_queue_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_queue_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_table_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_table_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_web_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"primary_web_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"queue_properties.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"resource_group_name": {
+								"computed": false,
+								"new":      "example-resources",
+								"old":      "",
+							},
+							"secondary_access_key": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_blob_connection_string": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_blob_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_blob_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_connection_string": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_dfs_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_dfs_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_file_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_file_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_location": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_queue_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_queue_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_table_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_table_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_web_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_web_host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"static_website.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"tags.%": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"tags.environment": {
+								"computed": false,
+								"new":      "staging",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "0.12.23"
+
+variables = {}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources
