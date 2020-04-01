@@ -1,4 +1,4 @@
-# This policy does stuff
+# This policy checks the public ip address in the network rules for an Azure Storage Account
 
 ##### Imports #####
 
